@@ -4,17 +4,60 @@
 
 
 bool checkPrime(uint64_t value) {
-// вставьте код функции
+    for (uint64_t i = 2; i <= value-1; i++)
+        if (value % i == 0)
+            return false;
+    return true;    
 }
 
 uint64_t nPrime(uint64_t n) {
-// вставьте код функции
+    uint64_t vivod;
+    uint64_t count = 0;
+    uint64_t ch = 1;
+    while (count != n) {
+        ch++;
+        bool isPrime = 1;
+        for (uint64_t i = 2; i < ch; i++)
+            if (ch % i == 0) {
+                isPrime = 0;
+                break;
+            }
+        if (isPrime) {
+            vivod = ch;
+            count++;
+        }
+    }
+    return vivod;
 }
 
 uint64_t nextPrime(uint64_t value) {
-// вставьте код функции
+    int isPrime;
+    while (1) {
+        value++;
+        isPrime = 1;
+        for (int i=2; i < value; i++)
+            if (value % i == 0) {
+                isPrime = 0;
+                break;
+            }
+        if (isPrime == 1)
+            break;
+    }
+    return value;
 }
 
 uint64_t sumPrime(uint64_t hbound) {
-// вставьте код функции
+    uint64_t summ = 0;
+    for (uint64_t ch=2; ch < hbound; ch++) {
+        bool isPrime = 1;
+        for (uint64_t i = 2; i < ch; i++) {
+            if (ch % i == 0) {
+                isPrime = 0;
+                break;
+            }
+        }
+        if (isPrime)
+            summ += ch;
+    }
+    return summ;
 }
